@@ -7,11 +7,10 @@ public class Player {
     int playerNo;
     Money money = new Money(1000);
     int turnsCount = 0;
-    List<Integer> hotelsOwned;
+    int hotelsOwned;
 
     public Player(int playerNo) {
         this.playerNo = playerNo;
-        hotelsOwned=new ArrayList<>();
     }
 
     int rollDice(Dice dice) {

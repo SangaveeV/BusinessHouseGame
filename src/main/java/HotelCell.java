@@ -2,6 +2,7 @@ import java.util.HashMap;
 
 public class HotelCell extends Cell {
     int owner = 0;
+
     public HotelCell(String name) {
         super(name);
     }
@@ -14,7 +15,7 @@ public class HotelCell extends Cell {
             }
             owner = player.playerNo;
             player.money.amountDeduction(200);
-            player.hotelsOwned.add(1);
+            player.hotelsOwned += 1;
         } else {
             player.money.amountDeduction(50);
             board.playerList.get(owner - 1).money.amountAddition(50);
