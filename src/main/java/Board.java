@@ -9,7 +9,7 @@ public class Board {
     int currentPlayer;
 
     public Board(List<Player> playerList, List<String> cells) {
-        this.playerList=playerList;
+        this.playerList = playerList;
         playerPosition = new HashMap<>();
         cellList = new ArrayList<>();
         initializeCells(cells);
@@ -48,10 +48,8 @@ public class Board {
     }
 
     private void playerPositions() {
-        for (Player player :playerList) {
-            playerPosition.put(player,-1);
+        for (Player player : playerList) {
+            playerPosition.put(player, -1);
         }
     }
-
-
 }

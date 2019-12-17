@@ -21,17 +21,16 @@ public class BusinessGame {
             nextPlayer();
         }
         displayPlayersAmount();
-
     }
 
     private void displayPlayersAmount() {
         for (Player player : board.playerList) {
             player.money.amount = player.money.amount + (player.hotelsOwned * 200);
         }
-        Collections.sort(playerList,Collections.reverseOrder((player1,player2)->
-                (int) (player1.money.amount-player2.money.amount)));
+        Collections.sort(playerList, Collections.reverseOrder((player1, player2) ->
+                (int) (player1.money.amount - player2.money.amount)));
         playerList.stream().forEach(player ->
-                System.out.println("player "+ player.getPlayerNo()+": "+ player.money.amount));
+                System.out.println("player " + player.getPlayerNo() + ": " + player.money.amount));
     }
 
     boolean playerHasChance() {
