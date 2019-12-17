@@ -1,5 +1,3 @@
-import java.util.HashMap;
-
 public class HotelCell extends Cell {
     int owner = 0;
 
@@ -13,7 +11,7 @@ public class HotelCell extends Cell {
             if (player.money.amount < 200) {
                 return;
             }
-            owner = player.playerNo;
+            owner = player.getPlayerNo();
             player.money.amountDeduction(200);
             player.hotelsOwned += 1;
         } else {

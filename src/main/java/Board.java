@@ -7,15 +7,13 @@ public class Board {
     HashMap<Player, Integer> playerPosition;
     List<Cell> cellList;
     int currentPlayer;
-    int totalPlayers;
 
-    public Board(int totalPlayers, List<String> cells) {
-        this.totalPlayers = totalPlayers;
-        playerList = new ArrayList<>();
+    public Board(List<Player> playerList, List<String> cells) {
+        this.playerList=playerList;
         playerPosition = new HashMap<>();
         cellList = new ArrayList<>();
-        players(totalPlayers);
         initializeCells(cells);
+        playerPositions();
     }
 
     void initializeCells(List<String> cell) {
@@ -49,19 +47,11 @@ public class Board {
         return playerList.get(currentPlayer);
     }
 
-    void nextPlayer() {
-        currentPlayer += 1;
-        if (currentPlayer >= playerList.size()) {
-            currentPlayer = 0;
+    private void playerPositions() {
+        for (Player player :playerList) {
+            playerPosition.put(player,-1);
         }
     }
 
-
-    void players(int totalPlayers) {
-        for (int i = 1; i <= totalPlayers; i++) {
-            playerList.add(new Player(i));
-            playerPosition.put(new Player(i), -1);
-        }
-    }
 
 }

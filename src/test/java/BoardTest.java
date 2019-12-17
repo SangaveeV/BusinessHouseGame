@@ -10,7 +10,7 @@ public class BoardTest {
     @Test
     void getNextPositionAsJailForDiceValue4() {
         List<String> cells = cells();
-        Board board = new Board(1, cells);
+        Board board = new Board(players(), cells);
         int diceValue = diceOutput().get(0);
         Cell nextCell = board.nextPosition(players().get(0), diceValue);
         assertEquals("J", nextCell.name);
@@ -19,7 +19,7 @@ public class BoardTest {
     @Test
     void aPlayerMovesToJailAndAmount150IsDeducted() {
         List<String> cells = cells();
-        Board board = new Board(1, cells);
+        Board board = new Board(players(), cells);
         int diceValue = diceOutput().get(0);
         board.movePlayer(board.playerList.get(0), diceValue);
         assertEquals(850, board.playerList.get(0).money.amount);
@@ -28,7 +28,7 @@ public class BoardTest {
     @Test
     void aPlayerMovesToTreasureAndAmount150IsAdded() {
         List<String> cells = cells();
-        Board board = new Board(1, cells);
+        Board board = new Board(players(), cells);
         int diceValue = diceOutput().get(7);
         board.movePlayer(board.playerList.get(0), diceValue);
         assertEquals(1200, board.playerList.get(0).money.amount);
@@ -37,7 +37,7 @@ public class BoardTest {
     @Test
     void aPlayerMovesToHotelAndAmount200IsDeducted() {
         List<String> cells = cells();
-        Board board = new Board(1, cells);
+        Board board = new Board(players(), cells);
         int diceValue = diceOutput().get(4);
         board.movePlayer(board.playerList.get(0), diceValue);
         assertEquals(800, board.playerList.get(0).money.amount);
@@ -46,7 +46,7 @@ public class BoardTest {
     @Test
     void aPlayerMovesToPreOwnedHotelAndPays50ToOwner() {
         List<String> cells = cells();
-        Board board = new Board(2, cells);
+        Board board = new Board(players(), cells);
         board.movePlayer(board.playerList.get(0), 5);
         board.movePlayer(board.playerList.get(1), 5);
         assertEquals(950, board.playerList.get(1).money.amount);
@@ -56,7 +56,7 @@ public class BoardTest {
     void getPlayerAmountForSetOfDiceValues(){
         BusinessGame businessGame=new BusinessGame(2,cells(),diceOutput());
         businessGame.startGame();
-        assertEquals(800,businessGame.board.playerList.get(1).money.amount);
+        assertEquals(900,businessGame.board.playerList.get(1).money.amount);
 
     }
 
@@ -100,6 +100,7 @@ public class BoardTest {
     List<Player> players() {
         List<Player> playersList = new ArrayList<>();
         playersList.add(new Player(1));
+        playersList.add(new Player(2));
         return playersList;
     }
 }

@@ -1,10 +1,7 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 
 public class Player {
-    int playerNo;
+    private int playerNo;
     Money money = new Money(1000);
     int turnsCount = 0;
     int hotelsOwned;
@@ -19,6 +16,10 @@ public class Player {
 
     void nextTurn() {
         turnsCount++;
+    }
+
+    public int getPlayerNo() {
+        return playerNo;
     }
 
     @Override
