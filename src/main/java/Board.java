@@ -6,7 +6,6 @@ public class Board {
     List<Player> playerList;
     HashMap<Player, Integer> playerPosition;
     List<Cell> cellList;
-    int currentPlayer;
 
     public Board(List<Player> playerList, List<String> cells) {
         this.playerList = playerList;
@@ -41,10 +40,6 @@ public class Board {
         index = index % cellList.size();
         playerPosition.replace(player, index);
         return cellList.get(index);
-    }
-
-    Player currentPlayer() {
-        return playerList.get(currentPlayer);
     }
 
     private void playerPositions() {

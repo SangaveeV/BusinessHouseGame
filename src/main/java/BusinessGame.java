@@ -5,6 +5,7 @@ public class BusinessGame {
     Board board;
     Dice dice;
     int totalPlayers;
+    int currentPlayer = 0;
 
     public BusinessGame(int totalPlayers, List<String> cells, List<Integer> diceOutputs) {
         this.totalPlayers = totalPlayers;
@@ -16,8 +17,8 @@ public class BusinessGame {
 
     void startGame() {
         while (playerHasChance() && dice.diceOutput.size() > 0) {
-            int diceValue = board.currentPlayer().rollDice(dice);
-            board.movePlayer(board.currentPlayer(), diceValue);
+            int diceValue = currentPlayer().rollDice(dice);
+            board.movePlayer(currentPlayer(), diceValue);
             nextPlayer();
         }
         displayPlayersAmount();
@@ -48,10 +49,14 @@ public class BusinessGame {
         }
     }
 
+    Player currentPlayer() {
+        return playerList.get(currentPlayer);
+    }
+
     void nextPlayer() {
-        board.currentPlayer += 1;
-        if (board.currentPlayer >= playerList.size()) {
-            board.currentPlayer = 0;
+        currentPlayer += 1;
+        if (currentPlayer >= playerList.size()) {
+            currentPlayer = 0;
         }
     }
 }
