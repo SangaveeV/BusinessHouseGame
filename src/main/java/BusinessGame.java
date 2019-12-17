@@ -16,7 +16,7 @@ public class BusinessGame {
     }
 
     void startGame() {
-        while (playerHasChance() && dice.diceOutput.size() > 0) {
+        while (playerHasChance() && !gameEnded()) {
             int diceValue = currentPlayer().rollDice(dice);
             board.movePlayer(currentPlayer(), diceValue);
             nextPlayer();
@@ -58,5 +58,12 @@ public class BusinessGame {
         if (currentPlayer >= playerList.size()) {
             currentPlayer = 0;
         }
+    }
+
+    boolean gameEnded(){
+        if(dice.diceOutput.size()==0){
+            return true;
+        }
+        return false;
     }
 }

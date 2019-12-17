@@ -88,15 +88,6 @@ public class BoardTest {
         return diceValue;
     }
 
-    List<Integer> diceOutputForHotels() {
-        List<Integer> diceValue = new ArrayList<>();
-        diceValue.add(4);
-        diceValue.add(3);
-        return diceValue;
-    }
-
-
-
     List<Player> players() {
         List<Player> playersList = new ArrayList<>();
         playersList.add(new Player(1));
